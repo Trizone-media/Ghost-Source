@@ -83,50 +83,7 @@ production stylesheet in assets/built/screen.css
 /* 2. Fonts
 /* ---------------------------------------------------------- */
 
-@font-face {
-    font-family: "Inter";
-    font-style: normal;
-    font-weight: 100 900;
-    font-display: swap;
-    src: url(../fonts/inter-roman.woff2) format("woff2");
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-
-@font-face {
-    font-family: "EB Garamond";
-    font-style: normal;
-    font-weight: 400 800;
-    font-display: swap;
-    src: url(../fonts/eb-garamond-roman.woff2) format("woff2");
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-
-@font-face {
-    font-family: "EB Garamond";
-    font-style: italic;
-    font-weight: 400 800;
-    font-display: swap;
-    src: url(../fonts/eb-garamond-italic.woff2) format("woff2");
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-
-@font-face {
-    font-family: "JetBrains Mono";
-    font-style: normal;
-    font-weight: 100 800;
-    font-display: swap;
-    src: url(../fonts/jetbrains-mono-roman.woff2) format("woff2");
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-
-@font-face {
-    font-family: "JetBrains Mono";
-    font-style: italic;
-    font-weight: 100 800;
-    font-display: swap;
-    src: url(../fonts/jetbrains-mono-italic.woff2) format("woff2");
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
+/* Fonts are preloaded and defined in default.hbs to avoid layout shift */
 
 /* 3. Resets
 /* ---------------------------------------------------------- */
@@ -238,7 +195,6 @@ a:hover {
     display: flex;
     align-items: center;
     position: relative;
-    overflow: hidden;
     max-width: 560px;
     width: 100%;
     height: 56px;
@@ -277,6 +233,7 @@ a:hover {
     letter-spacing: inherit;
     line-height: 1.1;
     border: 0;
+    border-radius: 40px;
     background-color: transparent;
     outline: none;
     transition: 0.3s ease-in-out;
@@ -363,6 +320,15 @@ button.gh-form-input {
 
 .gh-form.success .gh-button svg:last-of-type {
     display: block;
+}
+
+.gh-form [data-members-error] {
+    position: absolute;
+    top: 100%;
+    margin-top: 10px;
+    width: 100%;
+    font-size: 1.4rem;
+    line-height: 1.4;
 }
 
 @media (max-width: 576px) {
@@ -984,27 +950,26 @@ Search                         LOGO                    Login Subscribe
 }
 
 .gh-card-meta {
-    display: flex;
-    gap: 4px;
-    flex-wrap: wrap;
     align-items: center;
     padding-bottom: 1px;
     font-size: 1.25rem;
     font-weight: 500;
-    line-height: 1.05;
+    line-height: 1.4;
     letter-spacing: -0.004em;
     color: var(--color-secondary-text);
 }
 
 .gh-card-meta svg {
-    width: 16px;
-    height: 16px;
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    width: 12px;
+    height: 12px;
     margin-right: 2px;
-    margin-top: -2px;
 }
 
 .gh-card-meta:not(:empty) {
-    margin-top: 12px;
+    margin-top: 8px;
 }
 
 .gh-card-author + .gh-card-date::before {
@@ -1251,7 +1216,7 @@ Search                         LOGO                    Login Subscribe
 }
 
 .gh-header.is-highlight .gh-header-left .gh-card .gh-card-meta:not(:empty) {
-    margin-top: 14px;
+    margin-top: 12px;
 }
 
 .gh-header.is-highlight .gh-header-middle {
@@ -1389,6 +1354,7 @@ Search                         LOGO                    Login Subscribe
     flex-direction: column;
     align-items: center;
     gap: 48px;
+    overflow: unset;
     margin: auto;
     max-width: 1020px;
     text-align: center;
@@ -1557,7 +1523,7 @@ Search                         LOGO                    Login Subscribe
 }
 
 .gh-featured-feed .gh-card-meta:not(:empty) {
-    margin-top: 10px;
+    margin-top: 8px;
 }
 
 .gh-featured-feed .gh-card::before {
@@ -1627,7 +1593,7 @@ Search                         LOGO                    Login Subscribe
     grid-column: span 12;
 }
 
-.home-template .gh-more {
+.home-template .gh-feed:has(> :nth-child(12):last-child) ~ .gh-more {
     display: block;
 }
 
@@ -1716,7 +1682,7 @@ Search                         LOGO                    Login Subscribe
 }
 
 .gh-container .gh-card-meta:not(:empty) {
-    margin-top: 16px;
+    margin-top: 12px;
 }
 
 /* 12.1. List style */
@@ -1970,6 +1936,7 @@ Search                         LOGO                    Login Subscribe
     text-transform: uppercase;
     background-color: transparent;
     border: 0;
+    color: var(--color-darker-gray);
 }
 
 .gh-recommendations button svg {
@@ -2014,8 +1981,8 @@ Search                         LOGO                    Login Subscribe
 .gh-article-excerpt {
     margin-top: clamp(12px, 0.45vw + 10.18px, 16px);
     max-width: 720px;
-    font-size: clamp(1.5rem, 0.45vw + 1.32rem, 1.9rem);
-    line-height: 1.4;
+    font-size: clamp(1.7rem, 0.23vw + 1.61rem, 1.9rem);
+    line-height: 1.45;
     letter-spacing: -0.018em;
 }
 
@@ -2058,6 +2025,8 @@ Search                         LOGO                    Login Subscribe
 .gh-article-author-image :is(img, svg) {
     position: absolute;
     inset: 0;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
 }
 
@@ -2409,6 +2378,12 @@ blockquote.kg-blockquote-alt {
     opacity: 1;
 }
 
+.kg-bookmark-card a.kg-bookmark-container,
+.kg-bookmark-card a.kg-bookmark-container:hover {
+    background: var(--background-color) !important;
+    color: var(--color-darker-gray) !important;
+}
+
 .kg-bookmark-card .kg-bookmark-content {
     padding: 1.15em;
 }
@@ -2569,6 +2544,7 @@ figcaption a {
     width: 120px;
     height: 120px;
     border-radius: 50%;
+    object-fit: cover;
 }
 
 .author-template .gh-article-title {
@@ -2733,7 +2709,7 @@ figcaption a {
     letter-spacing: 0;
 }
 
-.has-serif-title :is(.gh-button, .gh-form) {
+.has-serif-title :is(.gh-button, .gh-form, .gh-form-input) {
     border-radius: 0;
 }
 
