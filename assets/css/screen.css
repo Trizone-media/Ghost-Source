@@ -3337,16 +3337,18 @@ figcaption a {
     background: none;
 }
 /* Web Share Banner Styles */
-/* Web Share Banner Styles */
 .webshare-banner {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 15px;
+    padding: 10px 20px;
     margin: 20px 0;
     background-color: #ffffff; /* White background */
     border: 1px solid #000; /* Black border */
     border-radius: 8px; /* Rounded corners */
+    max-width: 600px; /* Constrain maximum width */
+    margin-left: auto;
+    margin-right: auto; /* Center the banner */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
 }
 
@@ -3355,25 +3357,27 @@ figcaption a {
     align-items: center;
     gap: 10px; /* Space between logo and text */
     font-size: 16px;
-    font-weight: 500;
+    font-weight: bold;
     color: #000; /* Black text */
     text-decoration: none;
-    padding: 10px 20px;
+    padding: 8px 12px;
+    border: 1px solid transparent; /* Add hover effect for border */
+    border-radius: 4px;
     transition: all 0.3s ease; /* Smooth hover transition */
 }
 
 .webshare-banner a:hover {
     background-color: #f5f5f5; /* Light gray hover effect */
+    border-color: #000; /* Darken border on hover */
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); /* Slightly deeper shadow */
 }
 
 .webshare-banner .webshare-logo {
-    width: 30px; /* Adjust logo size */
+    width: 24px; /* Scale down logo */
     height: auto;
 }
 
 .webshare-banner span {
     font-size: 16px;
-    font-weight: bold;
     line-height: 1.4;
 }
