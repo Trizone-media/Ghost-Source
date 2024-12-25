@@ -3336,23 +3336,42 @@ figcaption a {
 .pswp--minimal--dark .pswp__top-bar {
     background: none;
 }
+/* Web Share Banner Styles */
 .webshare-banner {
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
     margin: 20px 0;
-    padding: 10px;
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+    background-color: #f9f9f9; /* Light background */
+    border: 1px solid #ddd; /* Subtle border */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow */
 }
 
 .webshare-banner a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
     font-size: 16px;
-    color: #007acc;
-    text-decoration: none;
     font-weight: bold;
+    color: #007acc; /* Button text color */
+    text-decoration: none;
+    padding: 10px 20px;
+    border: 2px solid #007acc;
+    border-radius: 6px;
+    transition: all 0.3s ease; /* Smooth transition */
 }
 
 .webshare-banner a:hover {
-    color: #005b99;
-    text-decoration: underline;
+    background-color: #007acc;
+    color: #fff; /* Change text color on hover */
+    border-color: #005b99;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); /* Slightly deeper shadow */
+}
+
+.webshare-banner a svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor; /* Match icon color with text */
 }
