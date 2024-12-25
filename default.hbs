@@ -58,34 +58,6 @@
     {{> "components/footer"}}
     
 </div>
-{{!-- Custom WebShare --}}
-<script>
-    document.querySelectorAll("[data-webshare]").forEach(function (e) {
-        e.addEventListener("click", function (event) {
-            event.preventDefault();
-            if (navigator.share) {
-                navigator.share({
-                    title: e.getAttribute("data-share-title") || document.title,
-                    text: e.getAttribute("data-share-text") || '',
-                    url: e.getAttribute("data-share-url") || window.location.href,
-                }).then(() => {
-                    // Trigger Plausible event on successful share
-                    plausible("sharingbanner", {
-                        props: {
-                            title: e.getAttribute("data-share-title") || document.title,
-                            url: e.getAttribute("data-share-url") || window.location.href,
-                        },
-                    });
-                    console.log("Page shared successfully");
-                }).catch((error) => {
-                    console.error("Error sharing:", error);
-                });
-            } else {
-                alert("Your browser does not support sharing. Please copy the link manually.");
-            }
-        });
-    });
-</script>
 {{#is "post, page"}}
     {{> "lightbox"}}
 {{/is}}
