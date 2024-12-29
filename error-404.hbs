@@ -1,0 +1,15 @@
+<script>
+  if (window.history && window.history.replaceState) {
+    // Replace the current state with a 410 status
+    window.history.replaceState(
+      null, 
+      '', 
+      window.location.href
+    );
+    
+    // Override the status code in the browser
+    Object.defineProperty(document.querySelector('html'), 'httpStatusCode', {
+      get: function() { return 410; }
+    });
+  }
+</script>
