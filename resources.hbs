@@ -1,0 +1,52 @@
+{{!< default}}
+
+<main class="gh-main gh-outer">
+    {{#tag}}
+        {{#if feature_image}}
+            <section class="gh-cover gh-outer">
+                <img
+                    class="gh-cover-image"
+                    srcset="{{img_url feature_image size="s"}} 300w,
+                            {{img_url feature_image size="m"}} 720w,
+                            {{img_url feature_image size="l"}} 960w,
+                            {{img_url feature_image size="xl"}} 1200w,
+                            {{img_url feature_image size="xxl"}} 2000w"
+                    sizes="100vw"
+                    src="{{img_url feature_image size="xl"}}"
+                    alt="{{name}}"
+                >
+                <div class="gh-cover-content">
+                    <h1 class="gh-cover-title">{{name}}</h1>
+                    {{#if description}}
+                        <p class="gh-cover-description">{{description}}</p>
+                    {{/if}}
+                </div>
+            </section>
+        {{else}}
+            <section class="gh-pagehead">
+                <h1 class="gh-pagehead-title">{{name}}</h1>
+                {{#if description}}
+                    <div class="gh-pagehead-description">{{description}}</div>
+                {{/if}}
+            </section>
+        {{/if}}
+    {{/tag}}
+
+    <div class="gh-topic gh-topic-grid">
+        <div class="gh-topic-content gh-feed">
+            {{#foreach posts limit="all"}}
+                <article class="gh-card">
+                    {{#if feature_image}}
+                        <a href="{{url}}" class="gh-card-image-link">
+                            <img src="{{img_url feature_image size="m"}}" alt="{{title}}" class="gh-card-image">
+                        </a>
+                    {{/if}}
+                    <div class="gh-card-content">
+                        <h2 class="gh-card-title"><a href="{{url}}">{{title}}</a></h2>
+                        <p class="gh-card-excerpt">{{excerpt}}</p>
+                    </div>
+                </article>
+            {{/foreach}}
+        </div>
+    </div>
+</main>
