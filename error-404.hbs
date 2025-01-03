@@ -1,52 +1,49 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>410 Gone</title>
-    <style>
-        body {
-            font-family: system-ui, -apple-system, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f5f5f5;
-        }
-        .error-container {
-            text-align: center;
-            padding: 2rem;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            max-width: 500px;
-        }
-        h1 {
-            font-size: 3rem;
-            color: #333;
-            margin-bottom: 1rem;
-        }
-        p {
-            color: #666;
-            margin: 1rem 0;
-        }
-    </style>
-    <script>
-        if (window.history && window.history.replaceState) {
-            window.history.replaceState(null, '', window.location.href);
-            Object.defineProperty(document.querySelector('html'), 'httpStatusCode', {
-                get: function() {
-                    return 410;
-                }
-            });
-        }
-    </script>
-</head>
-<body>
-    <div class="error-container">
-        <h1>410</h1>
-        <p>This resource is no longer available and will not be available again.</p>
+{{!--
+  This template is used for all 404 errors, which might occur on your site.
+--}}
+
+{{!-- This block preloads specific assets for the 404 page --}}
+{{#contentFor "preload"}}
+  <link rel="preload" href="{{asset "css/404.css"}}" as="style" />
+{{/contentFor}}
+
+{{!-- This block loads specific styles for the 404 page --}}
+{{#contentFor "styles"}}
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href="{{asset "css/404.css"}}"
+    media="screen"
+  />
+{{/contentFor}}
+
+{{!-- The tag below means: insert everything in this file
+into the {body} of the default.hbs template --}}
+{{!< default}}
+
+<div class="g-main-container">
+  <main role="main">
+    <div class="g-404-container">
+      <div class="g-404-background">
+        <style>
+          .g-404-background__image {
+            background-image: url({{asset "images/404.jpg"}});
+          }
+        </style>
+        <div class="g-404-background__image"></div>
+      </div>
+      <div class="g-404-content">
+        <h1 class="g-404-content__title">{{t "Page Not Found"}}</h1>
+        <p class="g-404-content__subtitle">
+          {{t "Sorry, we couldn’t find the page you were looking for."}}
+        </p>
+        <a
+          class="g-button wide outline on-dark-background focusable"
+          href="{{@site.url}}"
+        >
+          {{t "Back to home"}}
+        </a>
+      </div>
     </div>
-</body>
-</html>
+  </main>
+</div>
